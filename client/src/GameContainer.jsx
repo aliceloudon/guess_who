@@ -10,10 +10,11 @@ class GameContainer extends React.Component {
     this.state = {
       cards: [],
       questions: [
-      { index: 0, Q: 'Is the character male or female?'},
+      { index: 0, Q: 'Is the character female?'},
       { index: 1, Q: 'Do they have blonde hair?'},
       { index: 2, Q: 'Are they a current student at Hogwarts?'},
-      ]
+      ],
+      randomCard: []
     }
   }
 
@@ -32,12 +33,29 @@ class GameContainer extends React.Component {
     request.send()
   }
 
+  // Randomly select a card
+  selectRandomCard(){
+    
+  }
+
   // logic to decide if card should be turned over
   onSelectQuestion(selectedQuestion){
-    console.log('got it')
-    // if (this.state.questions.index === 0) && (this.cards.gender !== 'female') {
+    // console.log(selectedQuestion)
+    // if (selectedQuestion.index === 0) && (this.cards.gender !== 'female') {
     //    hide the card 
     // }
+    if ( selectedQuestion.index === 0 ) {
+      console.log('ready to hide male cards')
+      return
+    }    
+    else if ( selectedQuestion.index === 1 ) {
+      console.log('ready to hide cards with blonde hair')
+      return
+    }
+    else if ( selectedQuestion.index === 2 ) {
+      console.log('ready to hide cards which are not students')
+      return
+    }
   }
 
 
