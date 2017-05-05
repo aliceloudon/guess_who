@@ -28,6 +28,7 @@ class GameContainer extends React.Component {
         const jsonString = request.responseText
         const data = JSON.parse(jsonString)
         this.setState({ cards: data })
+        this.selectRandomCard()
       }
     }
     request.send()
@@ -35,15 +36,14 @@ class GameContainer extends React.Component {
 
   // Randomly select a card
   selectRandomCard(){
-    
+    let cardArray = this.state.cards
+    let randomCard = cardArray[Math.floor(Math.random()*cardArray.length)]
+    this.setState( {randomCard: randomCard} )
+    console.log(this.state.randomCard)
   }
 
   // logic to decide if card should be turned over
   onSelectQuestion(selectedQuestion){
-    // console.log(selectedQuestion)
-    // if (selectedQuestion.index === 0) && (this.cards.gender !== 'female') {
-    //    hide the card 
-    // }
     if ( selectedQuestion.index === 0 ) {
       console.log('ready to hide male cards')
       return
