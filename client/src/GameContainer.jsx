@@ -12,7 +12,8 @@ class GameContainer extends React.Component {
       questions: [
       { index: 0, Q: 'Is the character female?'},
       { index: 1, Q: 'Do they have blonde hair?'},
-      { index: 2, Q: 'Are they a current student at Hogwarts?'},
+      { index: 2, Q: 'Are they in Gryffindor?'},
+      { index: 3, Q: 'Are they in Slytherin?'},
       ],
       randomCard: undefined
     }
@@ -38,7 +39,12 @@ class GameContainer extends React.Component {
   onSelectQuestion(selectedQuestion, randomCard){
     console.log(randomCard)
     if ( selectedQuestion.index === 0 ) {
-      console.log('ready to hide male cards')
+      if (randomCard.gender === "female") {
+        console.log('YES')  
+      }
+      else {
+        console.log('NO')
+      }
       return
     }    
     else if ( selectedQuestion.index === 1 ) {
@@ -51,7 +57,21 @@ class GameContainer extends React.Component {
       return
     }
     else if ( selectedQuestion.index === 2 ) {
-      console.log('ready to hide cards which are not students')
+      if (randomCard.house === "Gryffindor") {
+        console.log('YES')  
+      }
+      else {
+        console.log('NO')
+      }
+      return
+    }
+    else if ( selectedQuestion.index === 3 ) {
+      if (randomCard.house === "Slytherin") {
+        console.log('YES')  
+      }
+      else {
+        console.log('NO')
+      }
       return
     }
   }
