@@ -16,7 +16,7 @@ class GameContainer extends React.Component {
 
   render(){
     const gameCards = this.state.cards.map( (card, index) => {
-      return <Card key={index} name={card.name}></Card>
+      return <Card key={index} name={card.name} image={card.image}></Card>
     })
     return(
       <div>
