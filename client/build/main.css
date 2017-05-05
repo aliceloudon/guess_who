@@ -1,7 +1,7 @@
 .card-container {
   display: flex;
   flex-wrap: wrap;
-  width: 1400px;
+  width: 100%;
 }
 
 .card {
@@ -14,3 +14,8 @@ img {
   height: 140px;
 }
 
+.question-section {
+  width: 800px;
+  height: 150px;
+  border: 1px solid grey;
+}
