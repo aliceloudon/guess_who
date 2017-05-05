@@ -7,7 +7,6 @@ class GameContainer extends React.Component {
 
   constructor(props){
     super(props)
-    // this.selectRandomCard = this.selectRandomCard.bind(this)
     this.state = {
       cards: [],
       questions: [
@@ -30,41 +29,31 @@ class GameContainer extends React.Component {
         const data = JSON.parse(jsonString)
         this.setState({ cards: data })
         this.setState({ randomCard: data[Math.floor(Math.random()*data.length)] })
-        // console.log(this.state.randomCard)
       }
     }
     request.send()
   }
 
-  // // Randomly select a card
-  // selectRandomCard(){
-  //   let cardArray = this.state.cards
-  //   let randomCard = cardArray[Math.floor(Math.random()*cardArray.length)]
-  //   this.setState( {randomCard: randomCard} )
-  //   // console.log(this.state.randomCard)
-  // }
-
   // logic to decide if card should be turned over
   onSelectQuestion(selectedQuestion, randomCard){
     console.log(randomCard)
-
-    // if ( selectedQuestion.index === 0 ) {
-    //   console.log('ready to hide male cards')
-    //   return
-    // }    
-    // else if ( selectedQuestion.index === 1 ) {
+    if ( selectedQuestion.index === 0 ) {
+      console.log('ready to hide male cards')
+      return
+    }    
+    else if ( selectedQuestion.index === 1 ) {
       if (randomCard.hairColour === "blonde") {
         console.log('YES')  
       }
       else {
         console.log('NO')
       }
-      
-    //   return
-    // }
-    // else if ( selectedQuestion.index === 2 ) {
-    //   console.log('ready to hide cards which are not students')
-    //   return
+      return
+    }
+    else if ( selectedQuestion.index === 2 ) {
+      console.log('ready to hide cards which are not students')
+      return
+    }
   }
 
   render() {
