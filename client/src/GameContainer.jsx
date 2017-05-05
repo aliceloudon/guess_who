@@ -21,7 +21,9 @@ class GameContainer extends React.Component {
     return(
       <div>
         <h1>Guess Who</h1>
-        {gameCards}
+          <div className='card-container'>
+            {gameCards}
+          </div>
       </div>
     )
   }

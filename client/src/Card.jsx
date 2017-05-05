@@ -11,9 +11,9 @@ class Card extends React.Component {
 
   render(){
     return(
-      <div>
-        {this.props.name}
+      <div className='card'>
         <img src={this.props.image}/>
+        <h4>{this.props.name}</h4>
       </div>
     )
   }
