@@ -9,13 +9,18 @@ class QuestionSelector extends React.Component {
     }
   }
 
+  handleChange(event){
+    const selectedQuestion = this.props.questions[event.target.value]
+    this.props.onSelectQuestion(selectedQuestion)
+  }
+
   render(){
     const options = this.props.questions.map( (question, index) => {
       return <option value={index} key={index}>{question.Q}</option>
     } )
 
     return(
-      <select id='questions' value={this.state.selectedIndex} >
+      <select id='questions' value={this.state.selectedIndex} onChange={this.handleChange.bind(this)} >
         { options }
       </select>
     )

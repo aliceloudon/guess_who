@@ -10,7 +10,9 @@ class GameContainer extends React.Component {
     this.state = {
       cards: [],
       questions: [
-      { Q: 'Is the character male or female?'}
+      { index: 0, Q: 'Is the character male or female?'},
+      { index: 1, Q: 'Do they have blonde hair?'},
+      { index: 2, Q: 'Are they a current student at Hogwarts?'},
       ]
     }
   }
@@ -31,19 +33,18 @@ class GameContainer extends React.Component {
   }
 
   // logic to decide if card should be turned over
-
-  // flip over function
-
+  onSelectQuestion(selectedQuestion){
+    console.log('got it')
+    // if (this.state.questions.index === 0) && (this.cards.gender !== 'female') {
+    //    hide the card 
+    // }
+  }
 
 
   render(){
     const gameCards = this.state.cards.map( (card, index) => {
       return <Card key={index} name={card.name} image={card.image}></Card>
     })
-
-    // const gameQuestions = this.state.questions.map( (question, index) => {
-    //   return <Question key={index} question={question.Q}></Question>
-    // })
 
     return(
       <div>
@@ -53,7 +54,7 @@ class GameContainer extends React.Component {
           </div>
         <section className='question-section'>
           <h2>Select a question to ask</h2>
-          <QuestionSelector questions={this.state.questions}/>
+          <QuestionSelector questions={this.state.questions} onSelectQuestion={this.onSelectQuestion}/>
         </section>
       </div>
     )
