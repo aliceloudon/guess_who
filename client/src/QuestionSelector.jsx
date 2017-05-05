@@ -11,7 +11,7 @@ class QuestionSelector extends React.Component {
 
   handleChange(event){
     const selectedQuestion = this.props.questions[event.target.value]
-    this.props.onSelectQuestion(selectedQuestion)
+    this.props.onSelectQuestion(selectedQuestion, this.props.randomCard)
   }
 
   render(){
