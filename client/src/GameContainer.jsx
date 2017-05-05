@@ -6,12 +6,23 @@ class GameContainer extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      cards: [
-      { name: 'Harry Potter', image: 'http://hp-api.herokuapp.com/images/harry.jpg' },
-      { name: 'Hermione Granger', image: 'http://hp-api.herokuapp.com/images/hermione.jpeg' },
-      { name: 'Ron Weasley', image: 'http://hp-api.herokuapp.com/images/ron.jpg' }
-      ]
+      cards: []
     }
+  }
+
+  componentDidMount() {
+    const url = 'http://hp-api.herokuapp.com/api/characters'
+    const request = new XMLHttpRequest()
+    request.open('GET', url)
+
+    request.onload = () => {
+      if (request.status === 200) {
+        const jsonString = request.responseText
+        const data = JSON.parse(jsonString)
+        this.setState({ cards: data })
+      }
+    }
+    request.send()
   }
 
   render(){

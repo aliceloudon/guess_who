@@ -1,10 +1,11 @@
 .card-container {
   display: flex;
   flex-wrap: wrap;
+  width: 1400px;
 }
 
 .card {
-  width: 180px;
+  width: 160px;
   height: 200px;
   align-content: center;
 }
