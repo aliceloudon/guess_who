@@ -46,7 +46,7 @@ class GameContainer extends React.Component {
   }
 
   updateCards(newCardsArray){
-    console.log('get here?')
+    console.log(this.state.randomCard)
     this.setState( {cards: newCardsArray} )
   }
 

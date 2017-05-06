@@ -36,31 +36,25 @@ class QuestionSelector extends React.Component {
   testMaleFemale(){
     if (this.props.randomCard.gender === 'female'){
       this.props.changeYesNoAnswer('Y')
-      this.removeCharacters('male')
+      this.keepCharacters('female')
       return
     }
     else {
       this.props.changeYesNoAnswer('N')
-      this.removeCharacters('female')
+      this.keepCharacters('male')
     }
-  }
-
-  removeCharacters(gender){
-    const newCardsArray = []
-    this.props.cards.forEach(function(card){
-      if (card.gender !== gender){
-        newCardsArray.push(card)
-      }
-    })
-    this.props.updateCards(newCardsArray)
   }
 
   testHairColour(){
     if (this.props.randomCard.hairColour === 'blonde'){
       this.props.changeYesNoAnswer('Y')
+      this.keepCharacters('blonde')
     }
     else {
       this.props.changeYesNoAnswer('N')
+      this.keepCharacters('black')
+      this.keepCharacters('red')
+      this.keepCharacters('brown')
     }
   }
 
@@ -80,6 +74,20 @@ class QuestionSelector extends React.Component {
     else {
       this.props.changeYesNoAnswer('N')
     }
+  }
+
+  keepCharacters(characteristic){
+    const newCardsArray = []
+    this.props.cards.forEach(function(card){
+      if (card.gender === characteristic){
+        newCardsArray.push(card) 
+      }
+      else if (card.hairColour === characteristic){
+        newCardsArray.push(card)
+
+      }
+    })
+    this.props.updateCards(newCardsArray)
   }
 
   render(){
