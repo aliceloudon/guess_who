@@ -11,11 +11,13 @@ class CharacterSelector extends React.Component {
 
   handleChange(event){
     const selectedCharacter = this.props.cards[event.target.value]
-    console.log('clicked')
+    if (selectedCharacter === this.props.randomCard){
+      this.props.updateRevealCharacter(this.props.randomCard)
+    }
   }
 
   render(){
-    const options = this.props.characters.map( (character, index) => {
+    const options = this.props.cards.map( (character, index) => {
       return <option value={index} key={index}>{character.name}</option>
     } )
 

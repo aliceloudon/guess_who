@@ -18,7 +18,8 @@ class GameContainer extends React.Component {
       { index: 4, Q: 'Are they male?'},
       ],
       randomCard: undefined,
-      answer: ''
+      answer: '',
+      revealCharacter: ''
     }
   }
 
@@ -47,8 +48,11 @@ class GameContainer extends React.Component {
     }
   }
 
+  updateRevealCharacter(character){
+    this.setState( {revealCharacter: character.name} )
+  }
+
   updateCards(newCardsArray){
-    // console.log(this.state.randomCard)
     this.setState( {cards: newCardsArray} )
   }
 
@@ -73,9 +77,12 @@ class GameContainer extends React.Component {
             <h4>{this.state.answer}</h4>
             <h2>Take a guess</h2>
             <CharacterSelector
-              characters={this.state.cards}
+              cards={this.state.cards}
+              randomCard={this.state.randomCard} 
               onSelectCharacter={this.onSelectCharacter}
+              updateRevealCharacter={this.updateRevealCharacter.bind(this)}
             />
+            <h4>The answer is... {this.state.revealCharacter}</h4>
           </section>
           <div className='card-container'>
             {gameCards}
