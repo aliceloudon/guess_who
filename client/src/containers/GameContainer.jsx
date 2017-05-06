@@ -1,8 +1,8 @@
 import React from 'react'
-import Card from './Card'
-import Question from './Question'
-import QuestionSelector from './QuestionSelector'
-import CharacterSelector from './CharacterSelector'
+import Card from '../components/Card'
+import Question from '../components/Question'
+import QuestionSelector from '../components/QuestionSelector'
+import CharacterSelector from '../components/CharacterSelector'
 
 class GameContainer extends React.Component {
 
