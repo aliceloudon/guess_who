@@ -59,21 +59,21 @@ class GameContainer extends React.Component {
     return(
       <div>
         <h1>Guess Who</h1>
+          <section className='question-section'>
+            <h2>Select a question to ask</h2>
+            <QuestionSelector 
+              questions={this.state.questions} 
+              cards={this.state.cards} 
+              randomCard={this.state.randomCard} 
+              onSelectQuestion={this.onSelectQuestion} 
+              changeYesNoAnswer={this.changeYesNoAnswer.bind(this)} 
+              updateCards={this.updateCards.bind(this)}
+              />
+            <h4>{this.state.answer}</h4>
+          </section>
           <div className='card-container'>
             {gameCards}
           </div>
-        <section className='question-section'>
-          <h2>Select a question to ask</h2>
-          <QuestionSelector 
-            questions={this.state.questions} 
-            cards={this.state.cards} 
-            randomCard={this.state.randomCard} 
-            onSelectQuestion={this.onSelectQuestion} 
-            changeYesNoAnswer={this.changeYesNoAnswer.bind(this)} 
-            updateCards={this.updateCards.bind(this)}
-            />
-          <h4>{this.state.answer}</h4>
-        </section>
       </div>
     )
   }
