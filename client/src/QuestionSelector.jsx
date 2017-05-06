@@ -98,12 +98,12 @@ class QuestionSelector extends React.Component {
       if (card.gender === characteristic){
         newCardsArray.push(card) 
       }
-      // else if (card.hairColour === characteristic){
-      //   newCardsArray.push(card)
-      // }
-      // else if (card.house === characteristic){
-      //   newCardsArray.push(card)
-      // }
+      else if (card.hairColour === characteristic){
+        newCardsArray.push(card)
+      }
+      else if (card.house === characteristic){
+        newCardsArray.push(card)
+      }
     })
     this.props.updateCards(newCardsArray)
   }

@@ -2,6 +2,7 @@ import React from 'react'
 import Card from './Card'
 import Question from './Question'
 import QuestionSelector from './QuestionSelector'
+import CharacterSelector from './CharacterSelector'
 
 class GameContainer extends React.Component {
 
@@ -68,8 +69,13 @@ class GameContainer extends React.Component {
               onSelectQuestion={this.onSelectQuestion} 
               changeYesNoAnswer={this.changeYesNoAnswer.bind(this)} 
               updateCards={this.updateCards.bind(this)}
-              />
+            />
             <h4>{this.state.answer}</h4>
+            <h2>Take a guess</h2>
+            <CharacterSelector
+              characters={this.state.cards}
+              onSelectCharacter={this.onSelectCharacter}
+            />
           </section>
           <div className='card-container'>
             {gameCards}
