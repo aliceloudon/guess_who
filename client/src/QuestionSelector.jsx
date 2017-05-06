@@ -11,7 +11,63 @@ class QuestionSelector extends React.Component {
 
   handleChange(event){
     const selectedQuestion = this.props.questions[event.target.value]
-    this.props.onSelectQuestion(selectedQuestion, this.props.randomCard)
+    this.onSelectQuestion(selectedQuestion)
+  }
+
+  onSelectQuestion(selectedQuestion){
+    if ( selectedQuestion.index === 0 ) {
+      this.testMaleFemale()
+      return
+    }
+    if ( selectedQuestion.index === 1 ) {
+      this.testHairColour()
+      return
+    }
+    if ( selectedQuestion.index === 2 ) {
+      this.testGryffindor()
+      return
+    }
+    if ( selectedQuestion.index === 3 ) {
+      this.testSlytherin()
+      return
+    }
+  }
+
+  testMaleFemale(){
+    if (this.props.randomCard.gender === 'female'){
+      console.log('YES')
+    }
+    else {
+      
+      console.log('NO')
+    }
+  }
+
+  testHairColour(){
+    if (this.props.randomCard.hairColour === 'blonde'){
+      console.log('YES')
+    }
+    else {
+      console.log('NO')
+    }
+  }
+
+  testGryffindor(){
+    if (this.props.randomCard.house === 'Gryffindor'){
+      console.log('YES')
+    }
+    else {
+      console.log('NO')
+    }
+  }
+
+  testSlytherin(){
+    if (this.props.randomCard.house === 'Slytherin'){
+      console.log('YES')
+    }
+    else {
+      console.log('NO')
+    }
   }
 
   render(){
@@ -21,9 +77,9 @@ class QuestionSelector extends React.Component {
 
     return(
       <select id='questions' value={this.state.selectedIndex} onChange={this.handleChange.bind(this)} >
-        { options }
+      { options }
       </select>
-    )
+      )
   }
 
 }
