@@ -38,17 +38,18 @@ class QuestionSelector extends React.Component {
       console.log('YES')
     }
     else {
-      
       console.log('NO')
     }
   }
 
   testHairColour(){
     if (this.props.randomCard.hairColour === 'blonde'){
-      console.log('YES')
+      this.props.changeYesNoAnswer('Y')
+      // console.log('YES')
     }
     else {
-      console.log('NO')
+      this.props.changeYesNoAnswer('N')
+      // console.log('NO')
     }
   }
 

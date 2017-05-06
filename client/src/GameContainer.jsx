@@ -15,7 +15,8 @@ class GameContainer extends React.Component {
       { index: 2, Q: 'Are they in Gryffindor?'},
       { index: 3, Q: 'Are they in Slytherin?'},
       ],
-      randomCard: undefined
+      randomCard: undefined,
+      answer: ''
     }
   }
 
@@ -35,46 +36,14 @@ class GameContainer extends React.Component {
     request.send()
   }
 
-  // logic to decide if card should be turned over
-  // onSelectQuestion(selectedQuestion, randomCard){
-  //   console.log(randomCard)
-  //   if ( selectedQuestion.index === 0 ) {
-  //     if (randomCard.gender === "female") {
-  //       console.log('YES')  
-  //     }
-  //     else {
-  //       console.log('NO')
-  //     }
-  //     return
-  //   }    
-  //   else if ( selectedQuestion.index === 1 ) {
-  //     if (randomCard.hairColour === "blonde") {
-  //       console.log('YES')  
-  //     }
-  //     else {
-  //       console.log('NO')
-  //     }
-  //     return
-  //   }
-  //   else if ( selectedQuestion.index === 2 ) {
-  //     if (randomCard.house === "Gryffindor") {
-  //       console.log('YES')  
-  //     }
-  //     else {
-  //       console.log('NO')
-  //     }
-  //     return
-  //   }
-  //   else if ( selectedQuestion.index === 3 ) {
-  //     if (randomCard.house === "Slytherin") {
-  //       console.log('YES')  
-  //     }
-  //     else {
-  //       console.log('NO')
-  //     }
-  //     return
-  //   }
-  // }
+  changeYesNoAnswer(answer){
+    if (answer === 'Y'){
+      this.setState( { answer: 'YES' } )
+    }
+    else {
+      this.setState( { answer: 'NO' } )
+    }
+  }
 
   render() {
     const gameCards = this.state.cards.map( (card, index) => {
@@ -89,8 +58,8 @@ class GameContainer extends React.Component {
           </div>
         <section className='question-section'>
           <h2>Select a question to ask</h2>
-          <QuestionSelector questions={this.state.questions} onSelectQuestion={this.onSelectQuestion} randomCard={this.state.randomCard} />
-          <h4>YES or NO</h4>
+          <QuestionSelector questions={this.state.questions} onSelectQuestion={this.onSelectQuestion} randomCard={this.state.randomCard} changeYesNoAnswer={this.changeYesNoAnswer.bind(this)}/>
+          <h4>{this.state.answer}</h4>
         </section>
       </div>
     )
