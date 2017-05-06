@@ -14,6 +14,7 @@ class GameContainer extends React.Component {
       { index: 1, Q: 'Do they have blonde hair?'},
       { index: 2, Q: 'Are they in Gryffindor?'},
       { index: 3, Q: 'Are they in Slytherin?'},
+      { index: 4, Q: 'Are they male?'},
       ],
       randomCard: undefined,
       answer: ''
@@ -46,7 +47,7 @@ class GameContainer extends React.Component {
   }
 
   updateCards(newCardsArray){
-    console.log(this.state.randomCard)
+    // console.log(this.state.randomCard)
     this.setState( {cards: newCardsArray} )
   }
 

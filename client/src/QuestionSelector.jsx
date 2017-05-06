@@ -16,7 +16,7 @@ class QuestionSelector extends React.Component {
 
   onSelectQuestion(selectedQuestion){
     if ( selectedQuestion.index === 0 ) {
-      this.testMaleFemale()
+      this.testFemale()
       return
     }
     if ( selectedQuestion.index === 1 ) {
@@ -31,17 +31,31 @@ class QuestionSelector extends React.Component {
       this.testSlytherin()
       return
     }
+    if ( selectedQuestion.index === 4 ) {
+      this.testMale()
+      return
+    }
   }
 
-  testMaleFemale(){
+  testFemale(){
     if (this.props.randomCard.gender === 'female'){
       this.props.changeYesNoAnswer('Y')
       this.keepCharacters('female')
-      return
     }
     else {
       this.props.changeYesNoAnswer('N')
+      this.removeCharacters('female')
+    }
+  }
+
+  testMale(){
+    if (this.props.randomCard.gender === 'male'){
+      this.props.changeYesNoAnswer('Y')
       this.keepCharacters('male')
+    }
+    else {
+      this.props.changeYesNoAnswer('N')
+      this.removeCharacters('male')
     }
   }
 
@@ -52,27 +66,29 @@ class QuestionSelector extends React.Component {
     }
     else {
       this.props.changeYesNoAnswer('N')
-      this.keepCharacters('black')
-      this.keepCharacters('red')
-      this.keepCharacters('brown')
+      this.removeCharacters('blonde')
     }
   }
 
   testGryffindor(){
     if (this.props.randomCard.house === 'Gryffindor'){
       this.props.changeYesNoAnswer('Y')
+      this.keepCharacters('Gryffindor')
     }
     else {
       this.props.changeYesNoAnswer('N')
+      this.removeCharacters('Gryffindor')
     }
   }
 
   testSlytherin(){
     if (this.props.randomCard.house === 'Slytherin'){
       this.props.changeYesNoAnswer('Y')
+      this.keepCharacters('Slytherin')
     }
     else {
       this.props.changeYesNoAnswer('N')
+      this.removeCharacters('Slytherin')
     }
   }
 
@@ -82,12 +98,32 @@ class QuestionSelector extends React.Component {
       if (card.gender === characteristic){
         newCardsArray.push(card) 
       }
-      else if (card.hairColour === characteristic){
-        newCardsArray.push(card)
-
-      }
+      // else if (card.hairColour === characteristic){
+      //   newCardsArray.push(card)
+      // }
+      // else if (card.house === characteristic){
+      //   newCardsArray.push(card)
+      // }
     })
     this.props.updateCards(newCardsArray)
+  }
+
+  removeCharacters(characteristic){
+    let filteredArray = this.props.cards
+    const cardsToRemove = []
+    this.props.cards.forEach(function(card){
+      if (card.gender === characteristic){
+        cardsToRemove.push(card) 
+      }
+      else if (card.hairColour === characteristic){
+        cardsToRemove.push(card)
+      }
+      else if (card.house === characteristic){
+        cardsToRemove.push(card)
+      }
+    })
+    filteredArray = filteredArray.filter(val => !cardsToRemove.includes(val))
+    this.props.updateCards(filteredArray)
   }
 
   render(){
