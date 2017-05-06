@@ -35,39 +35,37 @@ class QuestionSelector extends React.Component {
 
   testMaleFemale(){
     if (this.props.randomCard.gender === 'female'){
-      console.log('YES')
+      this.props.changeYesNoAnswer('Y')
     }
     else {
-      console.log('NO')
+      this.props.changeYesNoAnswer('N')
     }
   }
 
   testHairColour(){
     if (this.props.randomCard.hairColour === 'blonde'){
       this.props.changeYesNoAnswer('Y')
-      // console.log('YES')
     }
     else {
       this.props.changeYesNoAnswer('N')
-      // console.log('NO')
     }
   }
 
   testGryffindor(){
     if (this.props.randomCard.house === 'Gryffindor'){
-      console.log('YES')
+      this.props.changeYesNoAnswer('Y')
     }
     else {
-      console.log('NO')
+      this.props.changeYesNoAnswer('N')
     }
   }
 
   testSlytherin(){
     if (this.props.randomCard.house === 'Slytherin'){
-      console.log('YES')
+      this.props.changeYesNoAnswer('Y')
     }
     else {
-      console.log('NO')
+      this.props.changeYesNoAnswer('N')
     }
   }
 
