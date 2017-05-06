@@ -17,7 +17,6 @@ class QuestionSelector extends React.Component {
   onSelectQuestion(selectedQuestion){
     if ( selectedQuestion.index === 0 ) {
       this.testMaleFemale()
-      this.removeMaleCharacters()
       return
     }
     if ( selectedQuestion.index === 1 ) {
@@ -37,20 +36,22 @@ class QuestionSelector extends React.Component {
   testMaleFemale(){
     if (this.props.randomCard.gender === 'female'){
       this.props.changeYesNoAnswer('Y')
+      this.removeCharacters('male')
+      return
     }
     else {
       this.props.changeYesNoAnswer('N')
+      this.removeCharacters('female')
     }
   }
 
-  removeMaleCharacters(){
+  removeCharacters(gender){
     const newCardsArray = []
     this.props.cards.forEach(function(card){
-      if (card.gender === 'female'){
+      if (card.gender !== gender){
         newCardsArray.push(card)
       }
     })
-    // console.log(newCardsArray)
     this.props.updateCards(newCardsArray)
   }
 
