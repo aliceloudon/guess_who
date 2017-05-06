@@ -17,6 +17,7 @@ class QuestionSelector extends React.Component {
   onSelectQuestion(selectedQuestion){
     if ( selectedQuestion.index === 0 ) {
       this.testMaleFemale()
+      this.removeMaleCharacters()
       return
     }
     if ( selectedQuestion.index === 1 ) {
@@ -40,6 +41,17 @@ class QuestionSelector extends React.Component {
     else {
       this.props.changeYesNoAnswer('N')
     }
+  }
+
+  removeMaleCharacters(){
+    const newCardsArray = []
+    this.props.cards.forEach(function(card){
+      if (card.gender === 'female'){
+        newCardsArray.push(card)
+      }
+    })
+    // console.log(newCardsArray)
+    this.props.updateCards(newCardsArray)
   }
 
   testHairColour(){
@@ -76,7 +88,8 @@ class QuestionSelector extends React.Component {
 
     return(
       <select id='questions' value={this.state.selectedIndex} onChange={this.handleChange.bind(this)} >
-      { options }
+        <option value='-1' disabled>Select a question</option>
+        { options }
       </select>
       )
   }

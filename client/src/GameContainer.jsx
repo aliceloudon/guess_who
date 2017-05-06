@@ -45,6 +45,11 @@ class GameContainer extends React.Component {
     }
   }
 
+  updateCards(newCardsArray){
+    console.log('get here?')
+    this.setState( {cards: newCardsArray} )
+  }
+
   render() {
     const gameCards = this.state.cards.map( (card, index) => {
       return <Card key={index} name={card.name} image={card.image}></Card>
@@ -58,7 +63,14 @@ class GameContainer extends React.Component {
           </div>
         <section className='question-section'>
           <h2>Select a question to ask</h2>
-          <QuestionSelector questions={this.state.questions} onSelectQuestion={this.onSelectQuestion} randomCard={this.state.randomCard} changeYesNoAnswer={this.changeYesNoAnswer.bind(this)}/>
+          <QuestionSelector 
+            questions={this.state.questions} 
+            cards={this.state.cards} 
+            randomCard={this.state.randomCard} 
+            onSelectQuestion={this.onSelectQuestion} 
+            changeYesNoAnswer={this.changeYesNoAnswer.bind(this)} 
+            updateCards={this.updateCards.bind(this)}
+            />
           <h4>{this.state.answer}</h4>
         </section>
       </div>
